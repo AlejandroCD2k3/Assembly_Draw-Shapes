@@ -49,6 +49,8 @@
 	stringElegirCoordx1: .asciz "Elija la coordenada x1: \n"
 	stringElegirCoordy0: .asciz "Elija la coordenada y0: \n"
 	stringElegirCoordy1: .asciz "Elija la coordenada y1: \n"
+	stringElegirCentroX: .asciz "Elija la coordenada x para el centro del círculo: \n"
+	stringElegirCentroY: .asciz "Elija la coordenada y para el centro del círculo: \n"
 	cadenaDecision: .space MAX_INT
 	
 	# Coordenadas del pixel a dibujar
@@ -227,12 +229,13 @@ pintarCirculo:
 	
 	
 	# Inicializar parámetros
-	la t0, xc      # Cargar la dirección de xc en t0
-    	lw a3, 0(t0)   # Cargar el valor de xc en a0
-    	la t1, yc      # Cargar la dirección de yc en t1
-    	lw a4, 0(t1)   # Cargar el valor de yc en a1
-    	#la t0, r      # Cargar la dirección de xc en t0
-    	#lw a7, 0(t0)   # Cargar el valor del radio predeterminado
+	imprimirCadena(stringElegirCentroX)
+	pedirEntero
+    	mv a3, t0   # Cargar el valor de xc en a0
+    	imprimirCadena(stringElegirCentroY)
+    	pedirEntero
+    	mv a4, t0   # Cargar el valor de yc en a1
+    	
     	la t2, px_rgb       # Cargar la dirección de r en t2
     	lw a2, 0(t2)   # Cargar el valor de r en a2
     	
